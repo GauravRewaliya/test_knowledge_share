@@ -69,3 +69,5 @@ gem "foreman", "~> 0.88.1"
 gem "faker", "~> 3.5"
 
 gem "hotwire-livereload", "~> 2.0", :group => :development
+
+gem "httparty", "~> 0.23.1"

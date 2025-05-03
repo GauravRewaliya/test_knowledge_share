@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  meta_data: 
+  source_provider: MyString
+  sub_type: MyString
+  response: 
+  parser_info: MyString
+  filtered_data: 
+
+two:
+  url: MyString
+  meta_data: 
+  source_provider: MyString
+  sub_type: MyString
+  response: 
+  parser_info: MyString
+  filtered_data: 

@@ -1,0 +1,2 @@
+class ScrapperDb < ApplicationRecord
+end
