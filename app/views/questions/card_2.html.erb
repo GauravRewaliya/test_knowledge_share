@@ -1,0 +1,147 @@
+<div class="gr-card-place">
+  <% @questions.each_with_index do |q, idx| %>
+    <div class="gr-card" data-card-index="<%= idx %>">
+      <h4 class="gr-question-title">Q<%= idx + 1 %></h4>
+      <div class="gr-tags">Tags: <%= q["tags"].join(", ") %></div>
+      <h4 class="gr-question-content"><%= q["content"] %></h4>
+
+      <ul class="gr-options-list">
+        <% q["options"].each do |opt| %>
+          <li class="gr-option-item">
+            <button 
+              class="gr-option-button"
+              data-answer-key="<%= opt["id"] %>"
+              data-correct-key="<%= q["correct_option"] %>"
+            >
+              <%= opt["content"] %>
+            </button>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class="gr-answer-result"></div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Inline JS for functionality -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.gr-card');
+    cards.forEach(card => {
+      const buttons = card.querySelectorAll('.gr-option-button');
+      const resultDiv = card.querySelector('.gr-answer-result');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          const selected = button.dataset.answerKey;
+          const correct = button.dataset.correctKey;
+
+          // Disable all buttons after selecting an answer
+          buttons.forEach(btn => {
+            // btn.disabled = true;
+            btn.classList.remove('gr-correct', 'gr-wrong');
+          });
+
+          // Add styles to the selected button
+          if (selected === correct) {
+            button.classList.add('gr-correct');
+            resultDiv.textContent = '✅ Correct!';
+          } else {
+            button.classList.add('gr-wrong');
+            resultDiv.textContent = `❌ Wrong. Correct answer: ${correct.toUpperCase()}`;
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Inline CSS for styling -->
+<style>
+.gr-card-place {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0;
+  box-sizing: border-box;
+  
+  height: 100vh;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Snap scroll vertically */
+}
+
+.gr-card {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+  
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.3s ease;
+}
+
+.gr-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+  .gr-question-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+
+  .gr-tags {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+  }
+
+  .gr-question-content {
+    margin-bottom: 1rem;
+    color: #222;
+    line-height: 1.5;
+  }
+
+  .gr-option-button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background: #fafafa;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .gr-option-button:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+  }
+
+  .gr-answer-result {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .gr-correct {
+    background-color: #e6ffed;
+    border-color: #46c26b;
+    color: #237a3f;
+  }
+
+  .gr-wrong {
+    background-color: #ffeaea;
+    border-color: #e57373;
+    color: #c62828;
+  }
+</style>

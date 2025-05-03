@@ -63,3 +63,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "foreman", "~> 0.88.1"
+
+gem "faker", "~> 3.5"
+
+gem "hotwire-livereload", "~> 2.0", :group => :development

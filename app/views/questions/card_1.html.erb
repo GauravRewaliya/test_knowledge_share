@@ -1,0 +1,111 @@
+<div class="gr-card-place">
+  <% @questions.each_with_index do |q, idx| %>
+    <div class="gr-card">
+      <h4 class="gr-question-title">Q<%= idx + 1 %></h4>
+      <div class="gr-tags">
+        Tags: <%= q["tags"].join(", ") %>
+      </div>
+      <h4 class="gr-question-content"><%= q["content"] %></h4>
+      <ul class="gr-options-list">
+        <% q["options"].each do |opt| %>
+          <li class="gr-option-item">
+            <button 
+              data-controller="answer" 
+              data-action="click->answer#check"
+              data-answer-key="<%= opt["id"] %>"
+              data-correct-key="<%= q["correct_option"] %>"
+              class="gr-option-button"
+            >
+              <%= opt["content"] %>
+            </button>
+          </li>
+        <% end %>
+      </ul>
+      <div data-answer-target="result" class="gr-answer-result"></div>
+    </div>
+  <% end %>
+</div>
+<style>
+.gr-card-place {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 1rem; /* optional: aligns snap at left edge */
+}
+
+.gr-card {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  min-width: 100%; /* ensures full viewport width */
+  max-width: 100%;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .gr-card {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gr-card {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+}
+
+.gr-question-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.gr-question-content {
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  color: #111;
+}
+
+.gr-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gr-option-item + .gr-option-item {
+  margin-top: 0.5rem;
+}
+
+.gr-option-button {
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.gr-option-button:hover {
+  background: #f5f5f5;
+}
+
+.gr-tags {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.gr-answer-result {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+</style>
