@@ -8,6 +8,7 @@ class CreateScrapperDbs < ActiveRecord::Migration[8.0]
       t.json :response
       t.string :parser_info
       t.json :filtered_data
+      t.json :extra_data
 
       t.timestamps
     end

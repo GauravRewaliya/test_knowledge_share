@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_03_040914) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_03_094353) do
   create_table "questions", force: :cascade do |t|
     t.string "content"
     t.json "meta_data"
@@ -19,5 +19,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_03_040914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "correct_option"
+  end
+
+  create_table "scrapper_dbs", force: :cascade do |t|
+    t.string "url"
+    t.json "meta_data"
+    t.string "source_provider"
+    t.string "sub_type"
+    t.json "response"
+    t.string "parser_info"
+    t.json "filtered_data"
+    t.json "extra_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 end

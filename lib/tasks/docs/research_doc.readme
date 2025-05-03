@@ -1,0 +1,70 @@
+https://api.testbook.com/api/v2/tests/65eea6dad687c6bfc666fab0?auth_code=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3Rlc3Rib29rLmNvbSIsInN1YiI6IjYxZGMwOGE0MjMzZjAzZjQ3MGRlMWI1MyIsImF1ZCI6IlRCIiwiZXhwIjoiMjAyNS0wNC0yNlQxNzoyNToxMC45MjcxODYxMjlaIiwiaWF0IjoiMjAyNS0wMy0yN1QxNzoyNToxMC45MjcxODYxMjlaIiwib3JnSWQiOiIiLCJpc0xNU1VzZXIiOmZhbHNlLCJyb2xlcyI6InN0dWRlbnQifQ.O1PNaqPY97QfN5V1qnPgHqe5CVDwWaUWFzaNUFLHOMFsxgWAXvGr260wGdlBdsgvIukElwzj8ThmLru0otAdBfbrqa_CxSzHIDQtC5GsUsTJA3rkj67hD7GIbXkRYpPKCOu2m1ooiA00QyhG3IwJDIjT8qIs6TyvOOztI05escg&X-Tb-Client=web,1.2&language=English
+
+done -> fetch_test_data
+
+https://api.testbook.com/api/v2/study-tab/chapters/6091f7e200a47916d76a837b/practice-sections?__projection=%7B%22sections%22:%7B%22_id%22:1,%22subId%22:1,%22chapId%22:1,%22properties%22:%7B%22type%22:1,%22title%22:1%7D,%22notes%22:%7B%22_id%22:1,%22name%22:1,%22isCompleted%22:1,%22subjectId%22:1,%22chapterId%22:1,%22sectionId%22:1%7D,%22practices%22:%7B%22_id%22:1,%22title%22:1,%22description%22:1,%22ques%22:1,%22quesCount%22:1,%22displayQCount%22:1,%22completedQuestionsCount%22:1,%22stage%22:1,%22subjectId%22:1,%22chapterId%22:1,%22chapterTitle%22:1,%22sectionTitle%22:1,%22sectionId%22:1,%22accuracy%22:1,%22speed%22:1,%22accuracyStage%22:1,%22speedStage%22:1,%22targetAccuracy%22:1,%22targetSpeed%22:1,%22level%22:1,%22purchaseInfo%22:%7B%22type%22:1,%22id%22:1,%22consumedFrom%22:1%7D,%22hasAccess%22:1,%22type%22:1,%22studentImages%22:1,%22completedStudentCount%22:1,%22targetGroup%22:%7B%22_id%22:1,%22title%22:1,%22isPrimary%22:1%7D,%22targetSuperGroup%22:%7B%22_id%22:1,%22title%22:1,%22isPrimary%22:1%7D%7D%7D%7D&language=English%27
+||
+https://api.testbook.com/api/v2/study-tab/chapters/6091f7e200a47916d76a837b/practice-sections
+done -> 
+
+https://api.testbook.com/api/v2/study-tab/subjects/60881af444b1c5c7c9974fa3/chapters
+
+done ->
+
+
+https://api.testbook.com/api/v2/study-tab/subjects?groupIds=60881a9844b1c5c7c9974fa2&type=practice&limit=-1&__projection=%7B%22subjects%22:%7B%22_id%22:1,%22properties%22:%7B%22title%22:1,%22logo%22:1%7D,%22meta%22:%7B%22questionCount%22:1,%22noteCount%22:1%7D%7D%7D&language=English%27
+||
+https://api.testbook.com/api/v2/study-tab/subjects?groupIds=60881a9844b1c5c7c9974fa2
+
+    auth_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3Rlc3Rib29rLmNvbSIsInN1YiI6IjYxZGMwOGE0MjMzZjAzZjQ3MGRlMWI1MyIsImF1ZCI6IlRCIiwiZXhwIjoiMjAyNS0wNC0yNlQxNzoyNToxMC45MjcxODYxMjlaIiwiaWF0IjoiMjAyNS0wMy0yN1QxNzoyNToxMC45MjcxODYxMjlaIiwib3JnSWQiOiIiLCJpc0xNU1VzZXIiOmZhbHNlLCJyb2xlcyI6InN0dWRlbnQifQ.O1PNaqPY97QfN5V1qnPgHqe5CVDwWaUWFzaNUFLHOMFsxgWAXvGr260wGdlBdsgvIukElwzj8ThmLru0otAdBfbrqa_CxSzHIDQtC5GsUsTJA3rkj67hD7GIbXkRYpPKCOu2m1ooiA00QyhG3IwJDIjT8qIs6TyvOOztI05escg"
+    subject_id = "60881af444b1c5c7c9974fa3"
+    chapter_id = "6091f7e200a47916d76a837b"
+    section_id = "60c9c547a872c2695488f0a1"
+     -- practice - 60c9cb81a872c2695488f156
+     
+    groupId= "60881a9844b1c5c7c9974fa2",
+    global_concept_ids = 
+      - 5eea6a1039140f30f369e7e7 // quantitive appti
+      - 5eea6a0e39140f30f369e41d // logical resoning
+      - 5eea6a1639140f30f369f547 // computer gk
+      - 5eea6a0939140f30f369d8c0 // banking \ finance GK
+      - 5eea6a0d39140f30f369e38e // English
+    Target_SG = 5e6189e15f66e94f14a21f8c // banking
+      5e6189e15f66e94f14a21f90 // Insurance Exams
+
+
+|||||||||||||||||||||||| Byjus
+
+1
+https://mule.byjusexamprep.com/?operationName=GetPyspForGroup&variables=%7B%22id%22%3A%220a1238ce-a25e-11e5-b319-9ea29fdd41f8%22%2C%22last%22%3A8%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2257f35e00ff0c3e402cb9778804685373ca5231954dd64c503dc043b15e105085%22%7D%7D
+2.
+https://mule.byjusexamprep.com/?operationName=webgetPyspAttempt&variables=%7B%22id%22%3A%225a2edbd0-1759-11ea-bf97-26ccc59f8e91%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911%22%7D%7D
+  -b 'g-theme=LIGHT; home_loggedout_landed=true; primary_exam_id=72975611-4a5e-11e5-a83f-8b51c790d8b8; primary_exam_name=PO%2C%20Clerk%2C%20SO%20%26%20Insurance; primary_exam_slug=bank-exams' \
+
+https://mule.byjusexamprep.com/?operationName=slug&variables=%7B%22slug%22%3A%22ssc-exams/ssc-cgl-exam%22%2C%22pageType%22%3A%22Pysp%22%2C%22filter%22%3A%22Pysp%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22a899c43bae4d4d02b1e5951f913b9e6d984af043b2616c70e5a9370c3329cf13%22%7D%7D
+curl 'https://mule.byjusexamprep.com/?operationName=slug&variables=%7B%22slug%22%3A%22ssc-exams%2Fssc-cgl-exam%22%2C%22pageType%22%3A%22Pysp%22%2C%22filter%22%3A%22Pysp%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22a899c43bae4d4d02b1e5951f913b9e6d984af043b2616c70e5a9370c3329cf13%22%7D%7D' \
+  -b 'g-theme=LIGHT; home_loggedout_landed=true; primary_exam_id=e9c196a1-4ae6-11e5-bc68-8620ffdeb79c; primary_exam_name=SSC%20%26%20Railway; primary_exam_slug=undefined' \
+/// papers details
+
+view-source:https://byjusexamprep.com/ssc-exams/ssc-cgl-exam
+ExamforDisplay:
+cont + u
+
+
+https://mule.byjusexamprep.com/?operationName=webgetPyspAttempt&variables=%7B%22id%22%3A%225a2edbd0-1759-11ea-bf97-26ccc59f8e91%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911%22%7D%7D
+5a2edbd0-1759-11ea-bf97-26ccc59f8e91
+
+query webgetPyspAttempt($id: ID!) {
+  post(id: $id) {
+    id
+    title
+    attemptCount
+    totalQuestions
+    maxMarks
+    status
+    dateOfExam
+    isPaid
+    __typename
+    # Add more fields as needed
+  }
+}

@@ -24,7 +24,7 @@ module AI
       raise NotImplementedError, "Each adapter must define its own embedder method"
     end
 
-    def invoke(messages:, tools: nil, is_json_response: true)
+    def invoke(messages:, tools: nil, is_json_response: false)
       raise NotImplementedError, "Each adapter must define its own invoke method"
     end
   end

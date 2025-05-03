@@ -22,7 +22,7 @@ module AI
       response.parsed_response['data']
     end
 
-    def invoke(messages:, tools: nil, is_json_response: true)
+    def invoke(messages:, tools: nil, is_json_response: false)
       body = {
         model: client_options[:model] || 'gpt-4',
         messages: messages,
@@ -31,7 +31,27 @@ module AI
       }.compact
 
       response = self.class.post(llm, headers: headers, body: body.to_json)
-      is_json_response ? response.parsed_response : response.body
+      if response.code == 200
+        if is_json_response
+          { code: 200, obj: response }
+        else
+          { 
+            code: 200, 
+            content: response.parsed_response["choices"][0]["message"]["content"],
+            error: nil,
+            metadata: {
+              finish_reason: response.parsed_response["choices"][0]["finish_reason"],
+              usage: response.parsed_response["usage"]
+            }
+          }
+        end
+      else
+        if is_json_response
+          { code: response.code, content: nil, error: response.parsed_response, metadata: nil, obj: response }
+        else
+          { code: response.code, content: nil, error: response.body, metadata: nil, obj: response }
+        end
+      end
     end
 
     def headers
