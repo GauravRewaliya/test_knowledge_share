@@ -1,6 +1,9 @@
 namespace :scrapper_data_insert do
   desc "TODO"
   task byjus_paper: :environment do
+    auth_token = ""
+    paper_id = "5a2edbd0-1759-11ea-bf97-26ccc59f8e91"
+    print _fetch_byjus_practice_papers(auth_token: auth_token, paper_id: paper_id)
   end
 
   desc "TODO"
@@ -27,6 +30,59 @@ namespace :scrapper_data_insert do
     # print _fetch_chapters_of_sub(sub_id: subject_id, auth_token: auth_token)
   end
 
+end
+
+def _fetch_byjus_practice_papers(auth_token:, paper_id:)
+  # url = f"https://mule.byjusexamprep.com/?operationName=slug&variables=%7B%22slug%22%3A%22ssc-exams/ssc-cgl-exam%22%2C%22pageType%22%3A%22Pysp%22%2C%22filter%22%3A%22Pysp%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22a899c43bae4d4d02b1e5951f913b9e6d984af043b2616c70e5a9370c3329cf13%22%7D%7D"
+  # url = f"https://mule.byjusexamprep.com/?operationName=webgetPyspAttempt&variables=%7B%22id%22%3A%2261f33cb0-3eef-11ed-9b40-4cf2e41b23db%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911%22%7D%7D"
+  # https://mule.byjusexamprep.com/?operationName=webgetPyspAttempt&variables=%7B%22id%22%3A%224d0ef4a0-2e18-11ea-82cc-afad9169d515%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911%22%7D%7D
+  # https://mule.byjusexamprep.com/?operationName=webgetPyspAttempt&variables=%7B%22id%22%3A%221f170700-fefb-11e9-9edb-962465779361%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911%22%7D%7D
+  # https://mule.byjusexamprep.com/?operationName=webgetPyspAttempt&variables=%7B%22id%22%3A%22b295d430-b191-11eb-87aa-c1b976054474%22%2C%22lang%22%3A%22en%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911%22%7D%7D
+  # 
+  # https://mule.byjusexamprep.com/?operationName=GetPyspForExam&variables=%7B%22id%22%3A%2272975611-4a5e-11e5-a83f-8b51c790d8b8%22%2C%22last%22%3A8%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2231a016e43cff670c1d676491dd279fef9fd56251aaebbfd29cdc37194c8cc59a%22%7D%7D
+
+  # https://mule.byjusexamprep.com/?operationName=webgetPyspAttempt&variables=%7B%22id%22%3A%2263a607e0-e034-11ed-b69c-340e1e0ea3ab%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911%22%7D%7D
+  # 2263a607e0-e034-11ed-b69c-340e1e0ea3ab
+  # https://mule.byjusexamprep.com/?operationName=GetPyspForExam&variables=%7B%22id%22%3A%22980fe8a0-b9b5-11ea-bbbf-1109a752b7f3%22%2C%22last%22%3A8%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2231a016e43cff670c1d676491dd279fef9fd56251aaebbfd29cdc37194c8cc59a%22%7D%7D
+  # ttps://mule.byjusexamprep.com/?operationName=slug&variables=%7B%22slug%22%3A%22up-state-exams%22%2C%22pageType%22%3A%22Pysp%22%2C%22filter%22%3A%22Pysp%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22a899c43bae4d4d02b1e5951f913b9e6d984af043b2616c70e5a9370c3329cf13%22%7D%7D
+
+  # https://mule.byjusexamprep.com/?operationName=webGetMyInfo&variables=%7B%22filter%22%3A%22skipK12%22%2C%22app%22%3A%22gradeup%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%229f8139a57ed90141d4d3aebcae86b5f6b0d19e47588c5ccf886d8bb0fb623fee%22%7D%7D
+
+  base_url = "https://mule.byjusexamprep.com/"
+  operation_name = "webgetPyspAttempt"
+  sha256_hash = "8c0941db965dbb44aac8628720d039b11f2085bfc3dc13367b72c57331beb911"
+  primary_exam_id = '72975611-4a5e-11e5-a83f-8b51c790d8b8'
+
+  variables = {id: paper_id}.to_json
+  extensions = {persistedQuery: {version: 1, sha256Hash: sha256_hash}}.to_json
+
+  meta_data = {
+    "method" => "get",
+    "headers" => {
+      "Accept" => "application/json",
+      "User-Agent" => "Mozilla/5.0",
+      # "Authorization" => "Bearer #{auth_token}",
+      "Cookie" => "g-theme=LIGHT; primary_exam_id=#{primary_exam_id}; primary_exam_slug=bank-exams"
+    },
+    # "body" => {
+    #   "operationName" => operation_name,
+    #   "variables" => variables,
+    #   "extensions" => extensions
+    # },
+    "extra_info": {
+      "paper_id": paper_id
+    }
+  }
+
+  url = "#{base_url}?operationName=#{operation_name}&paper_id=#{primary_exam_id}"
+
+  return _insert_data(
+    url: url,
+    meta_data: meta_data,
+    sub_type: "byjus_practice_papers",
+    parser_info: nil,
+    source_provider: "byjus"
+  )
 end
 
 def _fetch_testbook_chapters(chapter_id:, auth_token:)

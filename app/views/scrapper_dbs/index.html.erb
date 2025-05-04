@@ -1,0 +1,107 @@
+<div>
+  <table class="scrapper_table">
+    <thead>
+      <tr>
+        <th class="option_url">URL</th>
+        <th class="option_meta">Meta Data</th>
+        <th class="option_source">Source Provider</th>
+        <th class="option_subtype">Sub Type</th>
+        <th class="option_status">Status</th>
+        <th class="option_response">Response</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |db_record| %>
+        <tr>
+          <td class="option_url"><%= db_record.url %></td>
+          <td class="option_meta"><%= db_record.meta_data %></td>
+          <td class="option_source"><%= db_record.source_provider %></td>
+          <td class="option_subtype"><%= db_record.sub_type %></td>
+          <td class="option_status">done</td>
+          <td class="option_response">
+            <% if db_record.response.present? %>
+              ✅
+            <% else %>
+              NULL
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<style>
+/*
+.scrapper_table {
+  @apply w-full table-fixed text-sm border border-gray-300;
+}
+
+.scrapper_table th,
+.scrapper_table td {
+  @apply px-2 py-1 border border-gray-200 align-top;
+}
+*/
+.scrapper_table {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.875rem; /* Tailwind: text-sm */
+  border: 1px solid #d1d5db; /* Tailwind: border-gray-300 */
+  border-collapse: collapse;
+}
+
+.scrapper_table th,
+.scrapper_table td {
+  padding: 0.5rem; /* Tailwind: px-2 py-1 */
+  border: 1px solid #e5e7eb; /* Tailwind: border-gray-200 */
+  vertical-align: top;
+}
+
+/* Truncate URL to single line with ellipsis */
+.option_url {
+  width: 10%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Meta data: show 3 lines with ellipsis */
+.option_meta {
+  /* width: 25%; */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Show full content for source and subtype */
+.option_source,
+.option_subtype {
+  width: 20%;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Status column - small */
+.option_status {
+  width: 8%;
+  text-align: center;
+}
+
+/* Response - small and ellipsed */
+.option_response {
+  width: 10%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Mobile view: hide low-priority columns */
+@media (max-width: 768px) {
+  .option_url,
+  .option_meta,
+  .option_response {
+    display: none;
+  }
+}
+</style>
