@@ -20,7 +20,8 @@
           <td class="option_status">done</td>
           <td class="option_response">
             <% if db_record.response.present? %>
-              ✅
+              <%= render partial: 'shared/response_modal', locals: { response: db_record.response } %>
+              <span class="response-indicator" data-response='<%= db_record.response.to_json %>' onclick="showResponseModal(this)">✅</span>
             <% else %>
               NULL
             <% end %>
@@ -79,10 +80,15 @@
 /* Response - small and ellipsed */
 .option_response {
   width: 10%;
-  text-align: center;
+  /*text-align: center;*/
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+/* Response indicator styling */
+.response-indicator {
+  cursor: pointer;
 }
 
 /* Mobile view: hide low-priority columns */
@@ -92,5 +98,27 @@
   .option_response {
     display: none;
   }
+  
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+  }
 }
 </style>
+
+<script>
+  function showResponseModal(element) {
+    const modal = document.getElementById('responseModal');
+    const jsonTree = document.getElementById('jsonTree');
+    
+    try {
+      const responseData = JSON.parse(element.getAttribute('data-response'));
+      jsonTree.innerHTML = formatJsonToHtml(responseData);
+      modal.style.display = 'block';
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      jsonTree.innerHTML = '<div class="error">Error parsing JSON response</div>';
+      modal.style.display = 'block';
+    }
+  }
+</script>
