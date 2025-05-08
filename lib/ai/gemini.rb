@@ -1,4 +1,3 @@
-# lib/ai/gemini.rb
 require_relative 'base'
 
 module AI
@@ -26,7 +25,6 @@ module AI
       }
 
       response = self.class.post(url, headers: headers, body: prompt.to_json)
-      # is_json_response ? response.parsed_response : response.body
       if response.code == 200
         if is_json_response
           return { code: 200, obj: response }

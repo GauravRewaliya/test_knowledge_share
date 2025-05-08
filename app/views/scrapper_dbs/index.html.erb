@@ -31,28 +31,18 @@
   </table>
 </div>
 <style>
-/*
-.scrapper_table {
-  @apply w-full table-fixed text-sm border border-gray-300;
-}
-
-.scrapper_table th,
-.scrapper_table td {
-  @apply px-2 py-1 border border-gray-200 align-top;
-}
-*/
 .scrapper_table {
   width: 100%;
   table-layout: fixed;
-  font-size: 0.875rem; /* Tailwind: text-sm */
-  border: 1px solid #d1d5db; /* Tailwind: border-gray-300 */
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
   border-collapse: collapse;
 }
 
 .scrapper_table th,
 .scrapper_table td {
-  padding: 0.5rem; /* Tailwind: px-2 py-1 */
-  border: 1px solid #e5e7eb; /* Tailwind: border-gray-200 */
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
   vertical-align: top;
 }
 
@@ -66,7 +56,6 @@
 
 /* Meta data: show 3 lines with ellipsis */
 .option_meta {
-  /* width: 25%; */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
