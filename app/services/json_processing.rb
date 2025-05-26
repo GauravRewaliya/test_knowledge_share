@@ -31,4 +31,8 @@ class JsonProcessing
       return JSON.parse(json_body.to_json)
     end
   end
+
+  def clean_response(response, json_filter)
+    
+  end
 end

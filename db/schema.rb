@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_03_094353) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_09_030843) do
   create_table "questions", force: :cascade do |t|
     t.string "content"
     t.json "meta_data"
@@ -32,5 +32,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_03_094353) do
     t.json "extra_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "clean_response"
+    t.json "clean_response_filter"
   end
 end
